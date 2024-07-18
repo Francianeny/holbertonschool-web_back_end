@@ -7,4 +7,3 @@ export default function taskBlock() {
   // Return an array containing the two constants
   return [task, task2];
 }
-
