@@ -2,6 +2,7 @@
 """
 This module contains a function to calculate the sum of a list
 of floating-point numbers."""
+from typing import List
 
 
 def sum_list(input_list: List[float]) -> float:
