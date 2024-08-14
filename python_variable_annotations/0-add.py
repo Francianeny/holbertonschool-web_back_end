@@ -2,7 +2,6 @@
 """
 This module provides a simple function for adding two numbers.
 """
-
 def add(a: float, b: float) -> float:
     """
     Returns:
