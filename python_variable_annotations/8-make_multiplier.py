@@ -2,6 +2,7 @@
 """Provides a function to create a multiplier function with a
 specified factor."""
 
+
 from typing import Callable
 
 

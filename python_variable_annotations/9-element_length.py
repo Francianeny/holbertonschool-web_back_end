@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Provides a function to calculate the length of elements
 in a list of sequences."""
+
+
 from typing import Iterable, Sequence, List, Tuple
 
 
