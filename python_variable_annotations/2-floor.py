@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Rounds a floating-point number down to the nearest integer."""
 import math
 
 
