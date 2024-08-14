@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
-""" function make_multiplier that takes a float multiplier as argument
-and returns a function that multiplies a float by multiplier."""
+"""Annotate the below function’s parameters and
+return values with the appropriate types"""
 
 
-from typing import Callable
+from typing import Iterable, List, Sequence, Tuple
 
 
-def make_multiplier(multiplier: float) -> Callable[[float], float]:
-    """return multiplier"""
-    def multiplier_function(value: float) -> float:
-        """return multiplier by one number"""
-        return value * multiplier
-
-    return multiplier_function
+def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
+    """return list"""
+    return [(i, len(i)) for i in lst]
