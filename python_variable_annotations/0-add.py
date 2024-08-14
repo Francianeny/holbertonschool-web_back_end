@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-This module provides a simple function for adding two numbers.
+"""This module provides a simple function for adding two numbers.
 """
 def add(a: float, b: float) -> float:
     """
