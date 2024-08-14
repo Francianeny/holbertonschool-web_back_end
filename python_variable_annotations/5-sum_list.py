@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""This module contains a function to calculate the sum of a list of floating-point numbers."""
-from typing import List
+"""
+This module contains a function to calculate the sum of a list
+of floating-point numbers."""
 
 
 def sum_list(input_list: List[float]) -> float:
