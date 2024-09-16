@@ -1,45 +1,53 @@
 const fs = require('fs');
+const path = require('path');
 
-function countStudents(path) {
+function countStudents(filePath) {
   try {
-    // Lecture du fichier de manière synchrone
-    const data = fs.readFileSync(path, 'utf8');
+    // Lire le fichier synchroniquement
+    const data = fs.readFileSync(filePath, 'utf8');
 
-    // Séparer les lignes du fichier en fonction des retours à la ligne
-    const lines = data.split('\n').filter(line => line.trim() !== '');
+    // Séparer les lignes
+    const lines = data.trim().split('\n');
 
-    // Vérifier qu'il y a des données (en excluant les lignes vides)
-    if (lines.length === 0) throw new Error('Cannot load the database');
+    // Assurer que le fichier n'est pas vide
+    if (lines.length <= 1) {
+      console.log('Number of students: 0');
+      return;
+    }
 
-    // Enlever la première ligne qui correspond à l'en-tête (header)
-    const headers = lines.shift();
+    // Extraire les en-têtes
+    const headers = lines[0].split(',');
+    const fieldIndex = headers.indexOf('field');
+    if (fieldIndex === -1) {
+      throw new Error('Invalid CSV format');
+    }
 
-    // Initialiser un objet pour stocker les étudiants par champ d'étude
+    // Créer un objet pour stocker les données
     const studentsByField = {};
+    let totalStudents = 0;
 
-    lines.forEach(line => {
-      const [firstname, lastname, age, field] = line.split(',');
+    // Traiter chaque ligne
+    for (let i = 1; i < lines.length; i++) {
+      const fields = lines[i].split(',');
+      if (fields.length === headers.length) {
+        const field = fields[fieldIndex];
+        const name = fields[0];
 
-      // Vérifier que la ligne est bien formatée
-      if (firstname && field) {
         if (!studentsByField[field]) {
           studentsByField[field] = [];
         }
-        studentsByField[field].push(firstname.trim());
+        studentsByField[field].push(name);
+        totalStudents += 1;
       }
-    });
+    }
 
-    // Afficher le nombre total d'étudiants
-    const totalStudents = lines.length;
+    // Afficher les résultats
     console.log(`Number of students: ${totalStudents}`);
-
-    // Afficher le nombre d'étudiants par champ et leurs prénoms
-    for (const [field, students] of Object.entries(studentsByField)) {
-      console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
+    for (const [field, names] of Object.entries(studentsByField)) {
+      console.log(`Number of students in ${field}: ${names.length}. List: ${names.join(', ')}`);
     }
   } catch (error) {
-    // Si une erreur survient lors de la lecture du fichier, lancer l'erreur spécifiée
-    throw new Error('Cannot load the database');
+    console.error('Cannot load the database');
   }
 }
 
