@@ -17,6 +17,6 @@ describe('File Reading Tests', () => {
 
   test('should read file data', () => {
     expect(fileData).toBeDefined();
-    expect(fileData).toContain('some expected content'); // Ajustez selon ce que vous attendez dans le fichier
+    expect(fileData).toContain('Johann'); // Ajustez selon ce que vous attendez dans le fichier
   });
 });
