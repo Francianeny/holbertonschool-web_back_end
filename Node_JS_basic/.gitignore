@@ -5,5 +5,4 @@
 3-main_1.js
 node_modules/
 *.json
-babel.config.js
 .eslintrc.js
