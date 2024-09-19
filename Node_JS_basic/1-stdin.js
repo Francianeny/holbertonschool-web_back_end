@@ -1,18 +1,15 @@
-// Affiche le message de bienvenue
-console.log('Welcome to Holberton School, what is your name?');
+#!/usr/bin/env node
 
-// Écouter les données entrantes de stdin (l'entrée utilisateur)
-process.stdin.on('data', (data) => {
-  const input = data.toString().trim(); // Convertit les données en chaîne et retire les espaces
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-  // Affiche le nom de l'utilisateur
-  console.log(`Your name is: ${input}`);
+process.stdin.on('readable', () => {
+  const chunk = process.stdin.read();
 
-  // Fermer le programme après l'entrée utilisateur
-  process.stdin.end();
+  if (chunk) {
+    process.stdout.write(`Your name is: ${chunk}`);
+  }
 });
 
-// Une fois que stdin est fermé (lorsque l'utilisateur appuie sur Ctrl+D ou quand stdin se termine)
 process.stdin.on('end', () => {
-  console.log('This important software is now closing');
+  process.stdout.write('This important software is now closing\n');
 });
