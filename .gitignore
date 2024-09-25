@@ -1,8 +1,0 @@
-*main.js
-node_modules/
-*.json
-utils.js
-babel.config.js
-.eslintrc.js
-*main.py
-__pycache__
